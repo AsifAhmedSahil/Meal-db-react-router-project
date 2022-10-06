@@ -23,7 +23,7 @@ const Meal = () => {
 
     }
     const searchReciepe = (event)=>{
-        if(event.key == "Enter"){
+        if(event.key === "Enter"){
             setUrl(`https://www.themealdb.com/api/json/v1/1/search.php?s=${search}`)
         }
 
@@ -39,17 +39,18 @@ const Meal = () => {
             facilis animi corporis!
           </p>
         </div>
-        <div className="search-box">
-          <input type="text" className="searchBar" onChange={(e) =>setSearch(e.target.value)} onKeyPress={searchReciepe}/>
+        <div className="searchBox">
+          <input type="text" className="search-bar" onChange={(e) =>setSearch(e.target.value)} onKeyPress={searchReciepe}/>
+        </div>
+        <div className="indexContainer">
+          <ReciepIndex alphaIndex = {(alpha)=>setIndex(alpha)}/>
         </div>
         <div className="container">
           {
             show ? <MealItem data={item} />: 'Not Found Food! Search Again'
           }
         </div>
-        <div className="indexContainer">
-          <ReciepIndex alphaIndex = {(alpha)=>setIndex(alpha)}/>
-        </div>
+        
       </div>
     </div>
   );
